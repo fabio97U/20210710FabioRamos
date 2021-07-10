@@ -1,24 +1,64 @@
+﻿
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>VentaAutos</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Prueba">
+    <meta name="author" content="Fabio">
+    <meta name="keywords" content="Prueba">
+    <link rel="shortcut icon" href="favicon.ico" />
     <base href="/" />
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/app.css" rel="stylesheet" />
+    <title>EasyCar</title>
+
+    <link href="dist/css/tabler.css" rel="stylesheet" />
+    <link href="dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="dist/css/demo.min.css" rel="stylesheet" />
+
+    <link href="dist/css/estilos_blazor.css" rel="stylesheet">
+    <style>
+        .dropdown-item.active, .dropdown-item:active {
+            background-color: rgb(1 111 243 / 13%);
+        }
+    </style>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+    <link href="_content/Blazored.Typeahead/blazored-typeahead.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unpkg.com/@tabler/core@1.0.0-beta2/dist/css/tabler-flags.min.css">
+
 </head>
 
-<body>
-    <app>Loading...</app>
+<body class="antialiased">
+    <app>
+        <h1>Cargando<span class="animated-dots"></span></h1>
+    </app>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+
     <script src="_framework/blazor.webassembly.js"></script>
+
+    <!-- Inicio: Graficos -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="dist/js/ApexChartPersonalisado.js"></script>-->
+    <!-- Fin: Graficos -->
+
+    <script src="dist/js/tabler.min.js"></script>
+    <script src="dist/js/index.js"></script>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.0.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <script src="_content/Blazored.Typeahead/blazored-typeahead.js"></script>
+
 </body>
 
 </html>

@@ -1,0 +1,74 @@
+﻿<div class="navbar-expand-md">
+    <div class="collapse navbar-collapse" id="navbar-menu">
+        <div class="navbar navbar-light">
+            @if (cargando)
+            {
+                <div class="example-content">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <div class="skeleton-line"></div>
+                            <div class="skeleton-line"></div>
+                        </div>
+                        <div class="col-4 ms-auto text-end">
+                            <div class="skeleton-line"></div>
+                            <div class="skeleton-line"></div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="container-xl">
+                <ul class="navbar-nav">
+                    <NavLink class="nav-item dropdown adm" href="adm" Match="NavLinkMatch.Prefix">
+                        <a class="nav-link dropdown-toggle" href="adm" data-bs-toggle="dropdown" role="button" style="height: 100%"
+                           aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                                     stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                                    <line x1="12" y1="12" x2="20" y2="7.5" />
+                                    <line x1="12" y1="12" x2="12" y2="21" />
+                                    <line x1="12" y1="12" x2="4" y2="7.5" />
+                                    <line x1="16" y1="5.25" x2="8" y2="9.75" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">Administracion</span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <NavLink class="adm dropdown-item opc" href="marca" Match="NavLinkMatch.All">
+                                        Marca
+                                    </NavLink>
+                                    <NavLink class="adm dropdown-item opc" href="modelo" Match="NavLinkMatch.All">
+                                        Modelo
+                                    </NavLink>
+                                    <NavLink class="adm dropdown-item opc" href="tipo_negocio" Match="NavLinkMatch.All">
+                                        Tipo Negocio
+                                    </NavLink>
+                                    <NavLink class="adm dropdown-item opc" href="cliente" Match="NavLinkMatch.All">
+                                        Clientes
+                                    </NavLink>
+                                    <NavLink class="adm dropdown-item opc" href="auto" Match="NavLinkMatch.All">
+                                        Autos
+                                    </NavLink>
+                                </div>
+                            </div>
+                        </div>
+                    </NavLink>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code{
+    bool cargando = false;
+
+    protected override void OnAfterRender (bool firstRender)
+    {
+        cargando = false;
+        base.OnAfterRender(firstRender);
+    }
+}

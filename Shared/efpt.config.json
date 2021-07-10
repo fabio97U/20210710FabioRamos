@@ -1,0 +1,64 @@
+﻿{
+   "CodeGenerationMode": 1,
+   "ContextClassName": "EasycarContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Modelos",
+   "ProjectRootNamespace": "VentaAutos.Shared",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 2,
+   "Tables": [
+      {
+         "Name": "[dbo].[cliente]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[marca]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[modelo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[precio]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[servicio]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tipo_negocio]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[vehiculo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[sp_cliente]",
+         "ObjectType": 1
+      }
+   ],
+   "UiHint": "SER-DESARRODB.easycar",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": true,
+   "UseNoNavigations": true,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}
