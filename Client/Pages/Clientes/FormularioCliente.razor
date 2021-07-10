@@ -1,5 +1,77 @@
-﻿<h3>FormularioCliente</h3>
+﻿<EditForm Model="model" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="form-label">Id:</label>
+            <div>
+                @model.id_cliente
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Nombre completo:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@model.nombre_completo" />
+                <ValidationMessage For="@(() => model.nombre_completo)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">DUI:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@model.dui" />
+                <ValidationMessage For="@(() => model.dui)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Fecha nacimiento:</label>
+            <div>
+                <InputDate class="form-control" @bind-Value="@model.fecha_nacimiento" max="@(new DateTime(DateTime.Now.Year-14, DateTime.Now.Month, DateTime.Now.Day).ToString("yyyy-MM-dd"))" min="1910-01-01" />
+                <ValidationMessage For="@(() => model.fecha_nacimiento)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Telefono:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@model.telefono" />
+                <ValidationMessage For="@(() => model.telefono)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Email:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@model.email" />
+                <ValidationMessage For="@(() => model.email)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Fecha registro:</label>
+            <div>
+                @model.fecha_registro
+            </div>
+        </div>
+        <br />
+        @if (EsBorrar)
+        {
+            <button class="btn btn-danger" type="submit" disabled="@SubmitDisabled">Clic aquí para borrar el registro</button>
+            if (SubmitDisabled)
+            {
+                <div class="spinner-border text-blue" role="status"></div>
+            }
+        }
+        else
+        {
+            <button class="btn btn-success" type="submit" disabled="@SubmitDisabled">@TextoBoton</button>
+            if (SubmitDisabled)
+            {
+                <div class="spinner-border text-blue" role="status"></div>
+            }
+        }
+    </div>
+</EditForm>
 
 @code {
-
+    [Parameter] public cliente model { get; set; }
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+    [Parameter] public string TextoBoton { get; set; }
+    [Parameter] public bool EsBorrar { get; set; }
+    [Parameter] public bool SubmitDisabled { get; set; } = false;
 }

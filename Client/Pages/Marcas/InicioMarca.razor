@@ -1,4 +1,4 @@
-﻿@page "/auto"
+﻿@page "/marca"
 
 <div class="card">
     <Encabezado RutaOpcion="@RutaOpcion" Opcion="@Opcion" Add="Add"></Encabezado>
@@ -6,8 +6,8 @@
     @*Inicio: MODAL*@
     <ModalFormulario Titulo="@Titulo">
         <RenderFragment>
-            <FormularioAuto OnValidSubmit="Crear" model="modelo"
-                               TextoBoton="@TextoBoton" EsBorrar="EsBorrar"></FormularioAuto>
+            <FormularioMarca OnValidSubmit="Crear" model="modelo"
+                           TextoBoton="@TextoBoton" EsBorrar="EsBorrar"></FormularioMarca>
         </RenderFragment>
     </ModalFormulario>
     <Success Cabezera="@ModalCabezera" TextoDetalle="@ModalTextoDetalle"></Success>
@@ -19,14 +19,8 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>ID</th>
-                        <th>nombre vehiculo</th>
+                        <th>id</th>
                         <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Año</th>
-                        <th>Tipo</th>
-                        <th>Estado</th>
-                        <th>Registro</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,25 +33,19 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="5" cy="12" r="1" /><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /></svg>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-sm-start" style="">
-                                        <a @onclick="@(() => Editar(item.vehiculo.id_vehiculo, false))" class="btn-outline-success dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-report">
+                                        <a @onclick="@(() => Editar(item.id_marca, false))" class="btn-outline-success dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-report">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" /><path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" /><line x1="16" y1="5" x2="19" y2="8" /></svg>
                                             Editar
                                         </a>
-                                        <a @onclick="@(() => Editar(item.vehiculo.id_vehiculo, true))" class="btn-outline-danger dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-report">
+                                        <a @onclick="@(() => Editar(item.id_marca, true))" class="btn-outline-danger dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-report">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="12" r="9" /><path d="M10 10l4 4m0 -4l-4 4" /></svg>
                                             Borrar
                                         </a>
                                     </div>
                                 </span>
                             </td>
-                            <td>@item.vehiculo.id_vehiculo</td>
-                            <td>@item.vehiculo.nombre_vehiculo</td>
-                            <td>@item.marca.nombre_marca</td>
-                            <td>@item.modelo.nombre_modelo</td>
-                            <td>@item.vehiculo.anio</td>
-                            <td>@item.tipo_Negocio.nombre_negocio</td>
-                            <td>@item.vehiculo.estado</td>
-                            <td>@item.vehiculo.fecha_registro</td>
+                            <td>@item.id_marca</td>
+                            <td>@item.nombre_marca</td>
                         </tr>
                     }
                 </tbody>

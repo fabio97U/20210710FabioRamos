@@ -1,0 +1,43 @@
+﻿<EditForm Model="model" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="form-label">Id:</label>
+            <div>
+                @model.id_marca
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Nombre Marca:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@model.nombre_marca" />
+                <ValidationMessage For="@(() => model.nombre_marca)" />
+            </div>
+        </div>
+        <br />
+        @if (EsBorrar)
+        {
+            <button class="btn btn-danger" type="submit" disabled="@SubmitDisabled">Clic aquí para borrar el registro</button>
+            if (SubmitDisabled)
+            {
+                <div class="spinner-border text-blue" role="status"></div>
+            }
+        }
+        else
+        {
+            <button class="btn btn-success" type="submit" disabled="@SubmitDisabled">@TextoBoton</button>
+            if (SubmitDisabled)
+            {
+                <div class="spinner-border text-blue" role="status"></div>
+            }
+        }
+    </div>
+</EditForm>
+
+@code {
+    [Parameter] public marca model { get; set; }
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+    [Parameter] public string TextoBoton { get; set; }
+    [Parameter] public bool EsBorrar { get; set; }
+    [Parameter] public bool SubmitDisabled { get; set; } = false;
+}

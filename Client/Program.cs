@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using VentaAutos.Client.Helpers;
+using VentaAutos.Client.Repositorio;
 
 namespace VentaAutos.Client
 {
@@ -18,8 +20,18 @@ namespace VentaAutos.Client
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            
+            ConfigureServices(builder.Services);
 
             await builder.Build().RunAsync();
+        }
+
+        private static void ConfigureServices (IServiceCollection services)
+        {
+
+            services.AddScoped<IRepositorio, VentaAutos.Client.Repositorio.Repositorio>();
+            services.AddScoped<IMostrarMensajes, MostrarMensajes>();
+
         }
     }
 }

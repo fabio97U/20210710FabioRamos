@@ -1,9 +1,70 @@
 ﻿@page "/cliente"
 
 <div class="card">
-    <h3>Cliente</h3>
+    <Encabezado RutaOpcion="@RutaOpcion" Opcion="@Opcion" Add="Add"></Encabezado>
+
+    @*Inicio: MODAL*@
+    <ModalFormulario Titulo="@Titulo">
+        <RenderFragment>
+            <FormularioCliente OnValidSubmit="Crear" model="modelo"
+                             TextoBoton="@TextoBoton" EsBorrar="EsBorrar"></FormularioCliente>
+        </RenderFragment>
+    </ModalFormulario>
+    <Success Cabezera="@ModalCabezera" TextoDetalle="@ModalTextoDetalle"></Success>
+    @*Fin: MODAL*@
+
+    <ListadoGenerico Listado="lst_datos">
+        <HayRegistrosCompleto>
+            <table class="table table-responsive table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nombre</th>
+                        <th>DUI</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th>Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in lst_datos)
+                    {
+                        <tr>
+                            <td>
+                                <span class="dropdown ">
+                                    <a class="btn dropdown-toggle align-text-top " data-bs-boundary="viewport" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="5" cy="12" r="1" /><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /></svg>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-sm-start" style="">
+                                        <a @onclick="@(() => Editar(item.id_cliente, false))" class="btn-outline-success dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-report">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" /><path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" /><line x1="16" y1="5" x2="19" y2="8" /></svg>
+                                            Editar
+                                        </a>
+                                        <a @onclick="@(() => Editar(item.id_cliente, true))" class="btn-outline-danger dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-report">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="12" r="9" /><path d="M10 10l4 4m0 -4l-4 4" /></svg>
+                                            Borrar
+                                        </a>
+                                    </div>
+                                </span>
+                            </td>
+                            <td>@item.nombre_completo</td>
+                            <td>@item.dui</td>
+                            <td>@item.fecha_nacimiento</td>
+                            <td>@item.telefono</td>
+                            <td>@item.email</td>
+                            <td>@item.fecha_registro</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </HayRegistrosCompleto>
+        <NoHayRegistros>
+            <br />
+            <br />
+            No hay registros
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="12" r="9" /><line x1="9" y1="10" x2="9.01" y2="10" /><line x1="15" y1="10" x2="15.01" y2="10" /><path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" /></svg>,
+            Clic <a href="#" class="" data-bs-toggle="modal" data-bs-target="#modal-report" @onclick="Add">aquí</a> para agregar registros
+        </NoHayRegistros>
+    </ListadoGenerico>
 </div>
-
-@code {
-
-}

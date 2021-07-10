@@ -1,0 +1,57 @@
+﻿@typeparam Titem
+
+@if (Listado == null)
+{
+    @if (Cargando == null)
+    {
+        <div class="card">
+            <div class="card-status-start bg-green"></div>
+            <div class="card-body">
+                <h4 class="card-title">Cargando... <div class="spinner-border text-blue" role="status"></div></h4>
+            </div>
+        </div>
+    }
+    else
+    {
+        @Cargando
+    }
+}
+else if (Listado.Count == 0)
+{
+    @if (NoHayRegistros == null)
+    {
+        <div class="card">
+            <div class="card-status-start bg-danger"></div>
+            <div class="card-body">
+                <h4 class="card-title">Sin registros <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="12" r="9" /><line x1="9" y1="10" x2="9.01" y2="10" /><line x1="15" y1="10" x2="15.01" y2="10" /><path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" /></svg></h4>
+                <p>No hay registros para mostrar</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        @NoHayRegistros
+    }
+}
+else
+{
+    if (HayRegistros != null)
+    {
+        foreach (var elemento in Listado)
+        {
+            @HayRegistros(elemento)
+        }
+    }
+    else
+    {
+        @HayRegistrosCompleto
+    }
+}
+
+@code {
+    [Parameter] public RenderFragment Cargando { get; set; }
+    [Parameter] public RenderFragment NoHayRegistros { get; set; }
+    [Parameter] public RenderFragment<Titem> HayRegistros { get; set; }
+    [Parameter] public RenderFragment HayRegistrosCompleto { get; set; }
+    [Parameter] public List<Titem> Listado { get; set; }
+}

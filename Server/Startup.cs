@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
+using VentaAutos.Server.Context;
 
 namespace VentaAutos.Server
 {
@@ -25,9 +26,9 @@ namespace VentaAutos.Server
         public void ConfigureServices (IServiceCollection services)
         {
 
-            //services.AddDbContext<LouceluniversityContext>();
-            //services.AddDbContext<LouceluniversityContext>(options =>
-            //options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<EasycarContext>();
+            services.AddDbContext<EasycarContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddMvc().AddNewtonsoftJson(options =>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VentaAutos.Server.Context;
 using VentaAutos.Shared.Modelos;
+using VentaAutos.Shared.DTOs;
 
 namespace VentaAutos.Server.Controllers
 {
@@ -41,6 +42,60 @@ namespace VentaAutos.Server.Controllers
 
             return vehiculo;
         }
+
+        #region inicio DTO
+        // GET: api/{controller}/DTO/5
+        [HttpGet("DTO")]
+        //public async Task<ActionResult<vehiculoDTO>> GetDTO (int id)
+        public ActionResult<List<vehiculoDTO>> GetDTO ()
+        {
+            List<vehiculoDTO> modelDTO = new List<vehiculoDTO>();
+            var model = new vehiculoDTO();
+
+            var datos_select = from a in _context.vehiculo
+                               join b in _context.marca on a.id_marca equals b.id_marca
+                               join c in _context.modelo on a.id_modelo equals c.id_modelo
+                               join d in _context.tipo_negocio on a.id_tipo_negocio equals d.id_tipo_negocio
+                               select new { a, b, c, d };
+
+            foreach (var item in datos_select)
+            {
+                model.marca = item.b;
+                model.modelo = item.c;
+                model.tipo_Negocio = item.d;
+                model.vehiculo = item.a;
+                modelDTO.Add(model);
+                model = new vehiculoDTO();
+            }
+
+            return modelDTO;
+        }
+
+        // GET: api/{controller}/DTO/5
+        [HttpGet("DTO/{id}")]
+        //public async Task<ActionResult<vehiculoDTO>> GetDTO (int id)
+        public ActionResult<vehiculoDTO> GetDTOId (int id)
+        {
+            var model = new vehiculoDTO();
+
+            var datos_select = from a in _context.vehiculo
+                               join b in _context.marca on a.id_marca equals b.id_marca
+                               join c in _context.modelo on a.id_modelo equals c.id_modelo
+                               join d in _context.tipo_negocio on a.id_tipo_negocio equals d.id_tipo_negocio
+                               where a.id_vehiculo == id
+                               select new { a, b, c, d };
+
+            foreach (var item in datos_select)
+            {
+                model.marca = item.b;
+                model.modelo = item.c;
+                model.tipo_Negocio = item.d;
+                model.vehiculo = item.a;
+            }
+
+            return model;
+        }
+        #endregion
 
         // PUT: api/vehiculoes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
